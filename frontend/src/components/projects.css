@@ -1,0 +1,767 @@
+/* ===== PROJECT CARDS ===== */
+.project-card {
+  display: flex;
+  flex-direction: column;
+  gap: var(--sp-4);
+  padding: var(--sp-5);
+  transition: all var(--t-base);
+}
+
+.project-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.project-card-icon {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-md);
+  background: var(--accent-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+}
+
+.project-card-body { flex: 1; }
+
+.project-card-name {
+  font-family: var(--font-display);
+  font-size: 1.0625rem;
+  font-weight: 700;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-2);
+  line-height: 1.3;
+}
+
+.project-card-desc {
+  font-size: 0.875rem;
+  color: var(--text-secondary);
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.project-card-footer {
+  display: flex;
+  gap: var(--sp-4);
+  padding-top: var(--sp-3);
+  border-top: 1px solid var(--border-subtle);
+}
+
+.project-card-stat {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-1);
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+/* ===== PROJECT DETAIL ===== */
+.project-detail-header {
+  display: flex;
+  align-items: flex-start;
+  gap: var(--sp-5);
+  margin-bottom: var(--sp-8);
+}
+
+.project-detail-icon {
+  width: 52px;
+  height: 52px;
+  border-radius: var(--r-lg);
+  background: var(--accent-subtle);
+  border: 1px solid rgba(0, 229, 192, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.project-detail-info { flex: 1; }
+
+.project-detail-name {
+  font-family: var(--font-display);
+  font-size: 1.75rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  letter-spacing: -0.03em;
+  margin-bottom: var(--sp-2);
+  line-height: 1.2;
+}
+
+.project-detail-meta {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  flex-wrap: wrap;
+}
+
+.project-detail-meta-item {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-size: 0.8125rem;
+  color: var(--text-muted);
+}
+
+.project-detail-actions {
+  display: flex;
+  gap: var(--sp-2);
+  flex-shrink: 0;
+}
+
+/* Tabs */
+.tabs {
+  display: flex;
+  gap: 2px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  padding: 4px;
+  margin-bottom: var(--sp-6);
+  width: fit-content;
+}
+
+.tab {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  padding: var(--sp-2) var(--sp-4);
+  border-radius: var(--r-md);
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all var(--t-base);
+}
+
+.tab:hover { color: var(--text-primary); background: var(--bg-hover); }
+
+.tab--active {
+  background: var(--bg-elevated);
+  color: var(--text-primary);
+  border: 1px solid var(--border-default);
+}
+
+.tab-count {
+  background: var(--bg-hover);
+  color: var(--text-muted);
+  border-radius: var(--r-full);
+  padding: 1px 7px;
+  font-size: 0.7rem;
+  font-weight: 700;
+}
+
+.tab--active .tab-count {
+  background: var(--accent-subtle);
+  color: var(--accent);
+}
+
+/* ===== TASK TABLE ===== */
+.task-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.task-table th {
+  text-align: left;
+  padding: var(--sp-3) var(--sp-4);
+  font-size: 0.75rem;
+  font-weight: 600;
+  color: var(--text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+  border-bottom: 1px solid var(--border-subtle);
+  white-space: nowrap;
+}
+
+.task-table td {
+  padding: var(--sp-3) var(--sp-4);
+  border-bottom: 1px solid var(--border-subtle);
+  vertical-align: middle;
+}
+
+.task-table tr:last-child td { border-bottom: none; }
+
+.task-table tbody tr {
+  transition: background var(--t-fast);
+  cursor: pointer;
+}
+
+.task-table tbody tr:hover td { background: var(--bg-hover); }
+
+.task-title-cell {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.task-title-text {
+  font-weight: 500;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.task-desc-text {
+  font-size: 0.775rem;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  max-width: 280px;
+}
+
+.assignee-chip {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+}
+
+.assignee-avatar {
+  width: 26px;
+  height: 26px;
+  border-radius: var(--r-sm);
+  background: var(--accent-subtle);
+  border: 1px solid rgba(0, 229, 192, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 0.65rem;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.assignee-name {
+  font-size: 0.8125rem;
+  color: var(--text-secondary);
+  white-space: nowrap;
+}
+
+.due-date-cell {
+  font-size: 0.8125rem;
+  white-space: nowrap;
+}
+
+.task-actions-cell {
+  display: flex;
+  gap: var(--sp-1);
+  justify-content: flex-end;
+}
+
+/* ===== MEMBER LIST ===== */
+.member-list { display: flex; flex-direction: column; gap: var(--sp-3); }
+
+.member-row {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-4);
+  padding: var(--sp-4);
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  transition: border-color var(--t-base);
+}
+
+.member-row:hover { border-color: var(--border-default); }
+
+.member-avatar {
+  width: 40px;
+  height: 40px;
+  border-radius: var(--r-md);
+  background: var(--accent-subtle);
+  border: 1px solid rgba(0, 229, 192, 0.15);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.member-info { flex: 1; min-width: 0; }
+
+.member-name {
+  font-weight: 600;
+  font-size: 0.9375rem;
+  color: var(--text-primary);
+}
+
+.member-email {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.member-actions { display: flex; align-items: center; gap: var(--sp-3); }
+
+/* Status Select inline */
+.status-select {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-md);
+  color: var(--text-primary);
+  font-size: 0.8rem;
+  padding: 4px 8px;
+  cursor: pointer;
+  font-family: var(--font-body);
+  transition: border-color var(--t-fast);
+  outline: none;
+}
+
+.status-select:focus { border-color: var(--accent); }
+
+/* Filter row */
+.filter-row {
+  display: flex;
+  gap: var(--sp-3);
+  margin-bottom: var(--sp-5);
+  flex-wrap: wrap;
+  align-items: center;
+}
+
+.filter-select {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-md);
+  color: var(--text-secondary);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  padding: var(--sp-2) var(--sp-3);
+  cursor: pointer;
+  outline: none;
+  transition: border-color var(--t-fast);
+}
+
+.filter-select:focus, .filter-select:hover { border-color: var(--border-strong); color: var(--text-primary); }
+
+.filter-search {
+  flex: 1;
+  min-width: 200px;
+  background: var(--bg-surface);
+  border: 1px solid var(--border-default);
+  border-radius: var(--r-md);
+  color: var(--text-primary);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  padding: var(--sp-2) var(--sp-3);
+  outline: none;
+  transition: border-color var(--t-base);
+}
+
+.filter-search::placeholder { color: var(--text-muted); }
+.filter-search:focus { border-color: var(--accent); }
+
+/* ===== MY TASKS ===== */
+.my-tasks-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: var(--sp-5);
+  align-items: start;
+}
+
+.my-tasks-actions {
+  display: flex;
+  gap: var(--sp-2);
+  align-items: center;
+}
+
+.kanban-col {
+  background: var(--bg-surface);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-lg);
+  overflow: hidden;
+}
+
+.kanban-col-header {
+  padding: var(--sp-4) var(--sp-5);
+  border-bottom: 1px solid var(--border-subtle);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.kanban-col-title {
+  display: flex;
+  align-items: center;
+  gap: var(--sp-2);
+  font-family: var(--font-display);
+  font-size: 0.875rem;
+  font-weight: 700;
+  text-transform: uppercase;
+  letter-spacing: 0.07em;
+}
+
+.kanban-col-count {
+  font-size: 0.75rem;
+  background: var(--bg-elevated);
+  color: var(--text-muted);
+  border-radius: var(--r-full);
+  padding: 2px 8px;
+  font-weight: 700;
+}
+
+.kanban-tasks { padding: var(--sp-3); display: flex; flex-direction: column; gap: var(--sp-3); min-height: 60px; }
+
+.task-card {
+  background: var(--bg-elevated);
+  border: 1px solid var(--border-subtle);
+  border-radius: var(--r-md);
+  padding: var(--sp-4);
+  transition: all var(--t-base);
+  cursor: pointer;
+}
+
+.task-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 0 0 1px var(--accent-subtle);
+  transform: translateY(-1px);
+}
+
+.task-card-title {
+  font-weight: 600;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin-bottom: var(--sp-2);
+  line-height: 1.4;
+}
+
+.task-card-meta {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--sp-2);
+  flex-wrap: wrap;
+  margin-top: var(--sp-3);
+}
+
+.task-card-project {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.task-card-due {
+  font-size: 0.75rem;
+  color: var(--text-muted);
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  white-space: nowrap;
+}
+
+.task-card-due.overdue { color: var(--overdue); }
+
+@media (max-width: 900px) {
+  .my-tasks-grid { grid-template-columns: 1fr; }
+}
+
+@media (min-width: 901px) and (max-width: 1200px) {
+  .my-tasks-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 1024px) {
+  .project-detail-header {
+    flex-direction: column;
+    gap: var(--sp-4);
+  }
+
+  .project-detail-actions {
+    width: 100%;
+    justify-content: flex-start;
+    flex-wrap: wrap;
+  }
+
+  .project-detail-name {
+    font-size: 1.5rem;
+  }
+
+  .tabs {
+    width: 100%;
+    overflow-x: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .filter-row {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .filter-search,
+  .filter-select,
+  .filter-row .btn {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .filter-search {
+    flex: none;
+  }
+
+  .task-table th,
+  .task-table td {
+    padding: var(--sp-2) var(--sp-3);
+  }
+
+  .task-desc-text {
+    max-width: 220px;
+  }
+
+  .project-card-footer {
+    flex-wrap: wrap;
+  }
+
+  .member-actions {
+    flex-wrap: wrap;
+    justify-content: flex-end;
+  }
+}
+
+@media (max-width: 768px) {
+  .project-detail-header {
+    margin-bottom: var(--sp-6);
+  }
+
+  .project-detail-meta {
+    gap: var(--sp-2);
+  }
+
+  .project-detail-actions {
+    justify-content: stretch;
+  }
+
+  .project-detail-actions .btn {
+    flex: 1 1 0;
+  }
+
+  .project-detail-actions .btn-icon {
+    flex: 0 0 40px;
+  }
+
+  .tabs {
+    gap: 4px;
+    padding: 3px;
+  }
+
+  .my-tasks-grid {
+    gap: var(--sp-4);
+  }
+
+  .my-tasks-actions {
+    width: 100%;
+  }
+
+  .my-tasks-actions .btn {
+    flex: 1 1 0;
+  }
+
+  .tab {
+    padding: var(--sp-2) var(--sp-3);
+    font-size: 0.8rem;
+  }
+
+  .project-card-footer {
+    flex-direction: column;
+    gap: var(--sp-2);
+  }
+
+  .project-card-header {
+    align-items: flex-start;
+    gap: var(--sp-3);
+  }
+
+  .project-card-stat {
+    width: 100%;
+  }
+
+  .kanban-col-header {
+    padding: var(--sp-3) var(--sp-4);
+  }
+
+  .kanban-tasks {
+    padding: var(--sp-2);
+    gap: var(--sp-2);
+  }
+
+  .task-card {
+    padding: var(--sp-3);
+  }
+
+  .task-card-meta {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .member-row {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-3);
+  }
+
+  .member-actions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .task-table,
+  .task-table thead,
+  .task-table tbody,
+  .task-table tr,
+  .task-table th,
+  .task-table td {
+    display: block;
+    width: 100%;
+  }
+
+  .task-table thead {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    padding: 0;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    border: 0;
+  }
+
+  .task-table tbody tr {
+    background: var(--bg-elevated);
+    border-bottom: 1px solid var(--border-subtle);
+    padding: var(--sp-3) var(--sp-4);
+  }
+
+  .task-table tbody tr:hover td {
+    background: transparent;
+  }
+
+  .task-table td {
+    border-bottom: none;
+    padding: 0;
+  }
+
+  .task-table td + td {
+    margin-top: var(--sp-2);
+  }
+
+  .task-table td::before {
+    content: attr(data-label);
+    display: block;
+    margin-bottom: 4px;
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+  }
+
+  .task-table td[data-label="Task"] {
+    margin-bottom: var(--sp-2);
+  }
+
+  .task-table td[data-label="Task"]::before {
+    display: none;
+  }
+
+  .task-title-text {
+    font-size: 0.95rem;
+  }
+
+  .task-desc-text {
+    max-width: none;
+    white-space: normal;
+    overflow: visible;
+    text-overflow: initial;
+    display: -webkit-box;
+    -webkit-line-clamp: 3;
+    -webkit-box-orient: vertical;
+  }
+
+  .assignee-chip,
+  .due-date-cell,
+  .status-select {
+    width: 100%;
+  }
+
+  .task-desc-text {
+    max-width: none;
+  }
+
+  .project-detail-meta {
+    gap: var(--sp-3);
+  }
+}
+
+@media (max-width: 520px) {
+  .project-detail-icon {
+    width: 44px;
+    height: 44px;
+  }
+
+  .project-detail-name {
+    font-size: 1.35rem;
+  }
+
+  .project-detail-meta-item {
+    width: 100%;
+  }
+
+  .project-detail-meta-item .badge,
+  .project-detail-meta-item span {
+    white-space: nowrap;
+  }
+
+  .task-table tbody tr {
+    padding: var(--sp-3);
+  }
+
+  .task-table td::before {
+    font-size: 0.65rem;
+  }
+
+  .task-actions-cell {
+    justify-content: flex-start;
+  }
+
+  .task-actions-cell .btn {
+    flex: 1 1 0;
+  }
+
+  .my-tasks-actions {
+    flex-direction: column;
+  }
+
+  .my-tasks-actions .btn {
+    width: 100%;
+  }
+
+  .kanban-col-header {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--sp-2);
+  }
+
+  .kanban-col-count {
+    align-self: flex-start;
+  }
+
+  .task-card-meta {
+    gap: var(--sp-1);
+  }
+}
