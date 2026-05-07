@@ -36,7 +36,7 @@ public class SecurityConfig {
     private final CustomUserDetailsService userDetailsService;
     private final JwtAuthenticationFilter jwtAuthenticationFilter;
 
-    @Value("${app.cors.allowed-origins}")
+    @Value("${app.cors.allowed-origins:http://localhost:3000,http://localhost:5173,https://*.vercel.app}")
     private String allowedOrigins;
 
     @Bean
@@ -78,12 +78,16 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration configuration = new CorsConfiguration();
-        configuration.setAllowedOrigins(Arrays.stream(allowedOrigins.split(","))
-            .map(String::trim)
-            .filter(origin -> !origin.isEmpty())
-            .collect(Collectors.toList()));
+        List<String> allowedOriginPatterns = Arrays.stream(allowedOrigins.split(","))
+                .map(String::trim)
+                .map(origin -> origin.endsWith("/") ? origin.substring(0, origin.length() - 1) : origin)
+                .filter(origin -> !origin.isEmpty())
+                .collect(Collectors.toList());
+
+        configuration.setAllowedOriginPatterns(allowedOriginPatterns);
         configuration.setAllowedMethods(Arrays.asList("GET", "POST", "PUT", "PATCH", "DELETE", "OPTIONS"));
         configuration.setAllowedHeaders(List.of("*"));
+        configuration.setExposedHeaders(List.of("Authorization", "Content-Type"));
         configuration.setAllowCredentials(true);
         configuration.setMaxAge(3600L);
 

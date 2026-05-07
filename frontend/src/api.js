@@ -26,19 +26,13 @@ api.interceptors.response.use(
 
 
 export const authApi = {
-  // Traditional auth
-  signup: data => api.post('/auth/signup-traditional', data),
-  login: data => api.post('/auth/login-traditional', data),
-  me: () => api.get('/auth/me'),
   
-  // OTP-based auth
   requestSignupOtp: data => api.post('/auth/request-signup-otp', data),
   requestLoginOtp: data => api.post('/auth/request-login-otp', data),
   verifyOtp: data => api.post('/auth/verify-otp', data),
   signupWithOtp: data => api.post('/auth/signup-with-otp', data),
   loginWithOtp: data => api.post('/auth/login-with-otp', data),
-  
-  // Integrated OTP-based auth (new flow)
+
   initiateSignup: data => api.post('/auth/signup', data),
   completeSignup: data => api.post('/auth/signup-verify', data),
   initiateLogin: data => api.post('/auth/login', data),
